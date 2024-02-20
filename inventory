@@ -1,0 +1,13 @@
+localhost
+
+[central_instance]
+
+[central_instance:vars]
+ansible_user=ec2-user
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
+[all_instances]
+
+[all_instances:vars]
+ansible_user=ec2-user
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'

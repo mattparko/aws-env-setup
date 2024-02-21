@@ -1,0 +1,4 @@
+---
+- import_playbook: deploy_network_components.yml
+- import_playbook: deploy_ec2_prerequisites.yml
+- import_playbook: show_env_details.yml

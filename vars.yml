@@ -1,0 +1,12 @@
+---
+# Supports creation of 1 or many subnets
+num_of_subnets: 3
+
+# A unique tag used for managing resources
+project_tag: rh-aws-env
+
+# List of ports to open for EC2 instances
+open_ports:
+  - 22
+  - 80
+  - 443

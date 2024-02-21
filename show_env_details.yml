@@ -1,0 +1,39 @@
+---
+- name: Output useful information about the environment
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - vars.yml
+
+  tasks:
+    - name: Get VPC subnet info
+      amazon.aws.ec2_vpc_subnet_info:
+        filters:
+          "tag:project": "{{ project_tag }}"
+      register: vpc_subnets
+
+    - name: Get keypair info
+      amazon.aws.ec2_key_info:
+        filters:
+          "tag:project": "{{ project_tag }}"
+      register: keypairs
+
+    - name: Get security group info
+      amazon.aws.ec2_security_group_info:
+        filters:
+          "tag:project": "{{ project_tag }}"
+      register: security_groups
+
+    - name: Output info to terminal
+      ansible.builtin.debug:
+        msg: |
+          Subnet ID                  CIDR block
+          ------------               ------------
+          {% for subnet in vpc_subnets.subnets %}
+          {{ subnet.id }}   {{ subnet.cidr_block }}
+          {% endfor %}
+
+          Key pair name:  {{ keypairs.keypairs.0.key_name }}
+          Security group name:  {{ security_groups.security_groups.0.group_name }}

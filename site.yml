@@ -1,4 +1,9 @@
 ---
-- import_playbook: deploy_network_components.yml
-- import_playbook: deploy_ec2_prerequisites.yml
-- import_playbook: show_env_details.yml
+- name: Run playbook to deploy network components
+  import_playbook: deploy_network_components.yml
+
+- name: Run playbook to deploy EC2 prerequisites
+  import_playbook: deploy_ec2_prerequisites.yml
+
+- name: Run playbook to output useful information about the environment
+  import_playbook: show_env_details.yml

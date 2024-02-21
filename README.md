@@ -1,5 +1,9 @@
 ## AWS environment setup
-Some basic building blocks for setting up demo environments in AWS using Ansible
+Some basic building blocks for setting up demo environments in AWS using Ansible.
+
+This project will deploy a VPC, network, and as many subnets as you desire.
+
+It will also create security groups and keypairs ready for EC2 deployment.
 
 ### Prereqs
 1. An AWS environment (the "AWS Blank Open Environment" in RHDP is perfect)
@@ -19,6 +23,7 @@ Some basic building blocks for setting up demo environments in AWS using Ansible
    ansible-galaxy install -r requirements.yml
    ```
 5. Ensure you have a public ssh key located at `~/.ssh/id_rsa.pub`
+6. Set desired variables in `vars.yml`
 
 ### Managing EC2 instances
 1. Start all: `ansible-playbook manage_ec2_instances.yml -e action=start`
